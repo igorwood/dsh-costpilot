@@ -1,5 +1,9 @@
 # dsh-costpilot v1.0
 
+[![CI](https://github.com/igorwood/dsh-costpilot/actions/workflows/ci.yml/badge.svg)](https://github.com/igorwood/dsh-costpilot/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![Node](https://img.shields.io/badge/node-%3E%3D24-brightgreen.svg)](package.json)
+
 DeepSeek Harness 成本治理插件：成本账本 + 9 个成本优化模块 + dock UI。默认 `mode: observe`（只记账/只记录决策），高风险模块默认关闭，确认基线后再逐项开启。
 
 ## 模块与实现状态
