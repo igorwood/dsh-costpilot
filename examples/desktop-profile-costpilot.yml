@@ -1,0 +1,38 @@
+# CostPilot v1.0 — recommended desktop-profile config.
+# Paste at the END of ~/.dsh/profiles/desktop/cordis.patch.yml (top-level array item),
+# then restart DeepSeek Harness (or wait for the profile HMR reload).
+#
+# Default posture: observe (record only), M4 cross-session index enabled,
+# every history-rewriting / routing module off until the ledger looks right.
+- id: costpilot
+  name: dsh-costpilot
+  config:
+    mode: observe                 # observe | assist | enforce
+    currency: CNY                 # amounts are ¥/1M tokens
+    usageSemantics: exclusive     # DSH: inputTokens = uncached input
+    peakPricing: { timeZone: Asia/Shanghai, windows: [{ days: [1,2,3,4,5], start: '09:00', end: '12:00' }, { days: [1,2,3,4,5], start: '14:00', end: '18:00' }] }
+    pricing:  # DeepSeek official CNY list prices; off-peak is half of peak.
+      deepseek-account:
+        default:
+          uncachedInput: 1
+          cacheWrite: 1
+          cacheRead: 0.02
+          output: 4
+          peak: { uncachedInput: 2, cacheWrite: 2, cacheRead: 0.04, output: 8 }
+    budgets: { sessionUSD: 5, taskUSD: 20, warnAtPct: 80, hardStopAtPct: 120 }
+    modules:
+      M1: { enabled: true }       # inherits observe: record-only until mode=assist
+      M2: { enabled: false }
+      M3: { enabled: false }
+      M4: { enabled: true, indexPath: .dsh-costpilot/index.db }
+      M5: { enabled: false, maxInjections: 3, firstTurns: 5 }
+      M6: { enabled: false, maxSwitches: 3 }
+      M7: { enabled: false }
+      M8: { enabled: false, level: advisory }
+      M9: { enabled: true, hardStop: false }
+# To turn real optimization on later:
+#   1) set mode: assist (all enabled modules start acting), or
+#   2) keep mode: observe and give a single module `mode: assist`.
+# High-risk modules M2/M3 rewrite history through the compaction protocol. They are
+# skipped whenever the built-in `compaction` service is mounted (the normal desktop
+# preset), so they only run in a preset that does not mount compaction-basic.

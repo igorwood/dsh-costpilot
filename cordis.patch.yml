@@ -1,0 +1,7 @@
+# dsh-costpilot bundle patch (layer over the profile's plugin tree).
+# 一行即可：core/observe/M1/M9 都在这一个插件实例内，由 config.modules 控制开关。
+- insert:
+    - id: costpilot
+      name: dsh-costpilot
+      config:
+        mode: observe

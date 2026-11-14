@@ -1,0 +1,11 @@
+node_modules/
+.tmp-test/
+.dsh-costpilot/
+*.log
+.DS_Store
+coverage/
+*.db
+*.sqlite
+*.sqlite3
+.env
+.env.*

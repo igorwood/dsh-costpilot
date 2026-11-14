@@ -1,0 +1,44 @@
+{
+  "name": "dsh-costpilot",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Cost governance plugin for DeepSeek Harness: ledger, M1-M9 cost optimizations, dock UI, cross-session index.",
+  "type": "module",
+  "license": "MIT",
+  "main": "./index.js",
+  "exports": {
+    ".": "./index.js",
+    "./client": "./client.js",
+    "./sim": "./lib/sim.js"
+  },
+  "bin": {
+    "costpilot-sim": "./bin/costpilot-sim.mjs"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "inject": [
+        "@deepseek-ai/dsh-client-ui-conversation"
+      ]
+    }
+  },
+  "engines": {
+    "dsh": ">=0.2.2-rc.1 <0.3"
+  },
+  "scripts": {
+    "test": "node --test test/*.test.mjs",
+    "sim": "node bin/costpilot-sim.mjs"
+  },
+  "files": [
+    "index.js",
+    "client.js",
+    "lib/",
+    "bin/",
+    "cordis.patch.yml",
+    "README.md",
+    "INSTALL.md"
+  ]
+}
