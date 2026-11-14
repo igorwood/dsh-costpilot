@@ -22,11 +22,16 @@ DeepSeek Harness 成本治理插件：成本账本 + 9 个成本优化模块 + d
 
 推荐配置模板：[examples/desktop-profile-costpilot.yml](examples/desktop-profile-costpilot.yml)（observe + M4 开启，其余按需）。v1 代码更新后需重启 DSH 使新插件代码生效。
 
+从 GitHub 安装：
+
 ```bash
+git clone https://github.com/igorwood/dsh-costpilot.git
+cd dsh-costpilot
 export DSH="/Applications/DeepSeek Harness.app/Contents/Resources/runtime/cli/bin/dsh"
-cd /path/to/dsh-costpilot
 "$DSH" plugin --profile desktop add "link:$PWD"
 ```
+
+如果是本地源码目录，把 `git clone` 那行删掉，直接 `cd /path/to/dsh-costpilot` 即可。
 之后在 profile 用户层（`~/.dsh/profiles/desktop/cordis.patch.yml`）放配置；desktop profile 由 Electron 独占，改完依赖 HMR/重启生效。详细步骤与已安装路径见 [INSTALL.md](INSTALL.md)。
 
 ## 配置（完整默认值见 lib/config.js）

@@ -4,6 +4,14 @@
   "private": true,
   "description": "Cost governance plugin for DeepSeek Harness: ledger, M1-M9 cost optimizations, dock UI, cross-session index.",
   "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/igorwood/dsh-costpilot.git"
+  },
+  "homepage": "https://github.com/igorwood/dsh-costpilot#readme",
+  "bugs": {
+    "url": "https://github.com/igorwood/dsh-costpilot/issues"
+  },
   "license": "MIT",
   "main": "./index.js",
   "exports": {
